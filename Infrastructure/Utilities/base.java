@@ -25,7 +25,7 @@ public class base {
 	public static RequestSpecification httpRequest;
 	public static JSONObject requestParams = new JSONObject();
 	public static Response resp;
-	
-	
+
+
 	public static String timeStamp = new SimpleDateFormat("yyyy-mm-dd_HH-mm-ss").format(Calendar.getInstance().getTime()); 
 }

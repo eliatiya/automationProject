@@ -21,8 +21,8 @@ public class verify  extends commonOps
 	public static void textInElement(WebElement elem , String expected) throws IOException, ParserConfigurationException, SAXException
 	{
 		try {	
-		assertEquals(elem.getText(), expected);
-		test.log(LogStatus.PASS,"assertion success");
+			assertEquals(elem.getText(), expected);
+			test.log(LogStatus.PASS,"assertion success");
 		}
 		catch (Exception e)
 		{
@@ -35,7 +35,7 @@ public class verify  extends commonOps
 			fail("failed to assert");
 		}
 	}
-	
+
 	public static void image(String imagePath) throws IOException, ParserConfigurationException,FindFailed , SAXException{
 		try{
 			screen.find(imagePath);
@@ -45,9 +45,9 @@ public class verify  extends commonOps
 		{
 			test.log(LogStatus.FAIL,"failed to find image, see details:  " + e + "see ScreenShut : "+ test.addScreenCapture( takeSS()));
 			fail("failed to find image");
-			
+
 		}
-		
+
 	}
 	public static void contains(String response, String text) throws IOException, ParserConfigurationException,FindFailed , SAXException{
 		try{
@@ -58,8 +58,8 @@ public class verify  extends commonOps
 		{
 			test.log(LogStatus.FAIL,text + "failed to contained, see details:  " + e);
 			fail("failed to contained");
-			
+
 		}
-		
+
 	}
 }

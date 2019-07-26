@@ -18,8 +18,8 @@ public class click extends commonOps {
 	public static void clickAndGo(WebElement elem) throws IOException, ParserConfigurationException, SAXException
 	{
 		try {	
-		elem.click();
-		test.log(LogStatus.PASS,"elemet clicked successfully" );
+			elem.click();
+			test.log(LogStatus.PASS,"elemet clicked successfully" );
 		}
 		catch (Exception e)
 		{
@@ -27,5 +27,5 @@ public class click extends commonOps {
 			fail("failed to click on Element");
 		}
 	}
-	
+
 }

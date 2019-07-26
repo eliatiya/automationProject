@@ -32,72 +32,72 @@ import io.restassured.RestAssured;
 public class commonOps extends base
 {
 	@BeforeClass
-	  public void beforClass() throws ParserConfigurationException, SAXException, IOException {
+	public void beforClass() throws ParserConfigurationException, SAXException, IOException {
 		if(getData("automationType").toLowerCase().equals("web"))
-      initBrowser("chrome");  
+			initBrowser("chrome");  
 		else if(getData("automationType").toLowerCase().equals("api"))
 			initApi();
-	  managePages.init();
-      InstanceReport();  
-		  
-	  }
-	
+		managePages.init();
+		InstanceReport();  
+
+	}
+
 	@BeforeMethod
-	  public void beforMethod(Method method) {
-		  System.out.println("beforMethod");
-		  initReportTest(method.getName().split("_")[0], method.getName().split("_")[1]);
-		  
-	  }
+	public void beforMethod(Method method) {
+		System.out.println("beforMethod");
+		initReportTest(method.getName().split("_")[0], method.getName().split("_")[1]);
+
+	}
 
 	@AfterMethod
-	  public void afterMethod() {
-		  System.out.println("afterMethod");
-		  finilizeReportTest();                                            
-	  }
+	public void afterMethod() {
+		System.out.println("afterMethod");
+		finilizeReportTest();                                            
+	}
 	@AfterClass
-	  public void afterClass() throws ParserConfigurationException, SAXException, IOException {
+	public void afterClass() throws ParserConfigurationException, SAXException, IOException {
 		if(!getData("automationType").equals("api"))
-            driver.quit();
-    finilizeextentReport();
-	  }
+			driver.quit();
+		finilizeextentReport();
+	}
 	public static String getData(String nodeName) throws ParserConfigurationException, SAXException, IOException
 	{
-	File fXmlFile = new File("./ConfigurationProject.xml");
-	DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-	DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-	Document doc = dBuilder.parse(fXmlFile); 
-	doc.getDocumentElement().normalize();
-	return doc.getElementsByTagName(nodeName).item(0).getTextContent();
+		File fXmlFile = new File("./ConfigurationProject.xml");
+		DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+		Document doc = dBuilder.parse(fXmlFile); 
+		doc.getDocumentElement().normalize();
+		return doc.getElementsByTagName(nodeName).item(0).getTextContent();
 	}
-	
+
 	public static void initBrowser(String browserType) throws ParserConfigurationException, SAXException, IOException
 	{
 		switch(browserType.toLowerCase())
 		{
 		case "chrome":
-		driver = initChromeDriver();
-		break;
+			driver = initChromeDriver();
+			break;
 		case "edge":
-		driver = initEdgeDriver();
-		break;
+			driver = initEdgeDriver();
+			break;
 		}
 		driver.manage().window().maximize();
-        driver.get("https://www.ebay.com/");
-	    driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
-	    screen = new Screen();
+		driver.get("https://www.ebay.com/");
+		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
+		screen = new Screen();
 	}
-	
+
 	public static WebDriver initChromeDriver() throws ParserConfigurationException, SAXException, IOException
 	{
 		System.setProperty("webdriver.chrome.driver",getData("ChromeDriverPath"));
 		WebDriver driver = new ChromeDriver();
-		 return driver;
+		return driver;
 	}
 	public static WebDriver initEdgeDriver() throws ParserConfigurationException, SAXException, IOException
 	{
 		System.setProperty("webdriver.edge.driver",getData("MicrosoftWebDriver"));
 		WebDriver driver = new EdgeDriver();
-		 return driver;
+		return driver;
 	}
 	public static void initApi() throws ParserConfigurationException, SAXException, IOException
 	{
@@ -124,13 +124,13 @@ public class commonOps extends base
 	public static String takeSS() throws IOException, ParserConfigurationException, SAXException
 	{
 		String SSpath = getData("ReportPath") +"Execution" + timeStamp + "/" + "screenShut_" +getRandomNumber() + ".png";
-		 File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-		 FileUtils.copyFile(scrFile, new File(SSpath));
+		File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(scrFile, new File(SSpath));
 		return SSpath;
 	}
 	public static int getRandomNumber(){
 		Random rand = new Random();
 		return rand.nextInt(9999999)+ 1 ;
-		
+
 	}
 }
