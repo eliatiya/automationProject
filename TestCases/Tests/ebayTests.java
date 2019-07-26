@@ -20,7 +20,7 @@ public class ebayTests extends commonOps {
   	@Test
 	public void Test1_searchValue() throws IOException, ParserConfigurationException, SAXException, FindFailed{
 		web_search.go("bmwnew", "Baby");
-	//	verify.textInElement(ebayResult.resultField, "0 results found for bmwnew, so we searched for bmw new");
+		verify.textInElement(ebayResult.resultField, "0 results found for bmwnew, so we searched for bmw new");
 		verify.image("./ImageRepository/ebayLogo.png");
 		
 	}
