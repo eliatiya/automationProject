@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Configuration>
+<!-- Web/API -->>
+<automationType>web</automationType>
+<!-- URL -->>
+<url>https://www.ebay.com/</url>
+<!-- Web -->>
+<BrowserType>chrome</BrowserType>
+<ChromeDriverPath>C:\\devl\\work\\seleniumdrivers\\libs\\chromedriver.exe</ChromeDriverPath>
+<MicrosoftWebDriver>C:\\devl\\work\\seleniumdrivers\\libs\\MicrosoftWebDriver.exe</MicrosoftWebDriver>
+<!-- api -->>
+<API_URL>http://localhost:9000</API_URL>
+<API_Resource>/student</API_Resource>
+<!-- DataBase -->>
+<DB_URL>jdbc:mysql://localhost:3306/sakila</DB_URL>
+<DB_User>root</DB_User>
+<DB_Pass>root123</DB_Pass>
+<!-- Report -->>
+<ReportPath>C:\\devl\\work\\seleniumdrivers\\libs\\ExtentReportProject\\</ReportPath>
+<ReportName>TestExecution</ReportName>
+<!--  -->>
+</Configuration>
